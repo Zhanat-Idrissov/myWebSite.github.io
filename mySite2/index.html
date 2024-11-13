@@ -1,1 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VK Profile Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f3f3f3;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .sidebar {
+            width: 200px;
+            background-color: #e3e3e3;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .menu p {
+            margin: 10px 0;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .profile-picture-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 10%;
+            object-fit: cover;
+        }
+        
+        .edit-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .profile-info {
+            flex: 1;
+        }
+        
+        .profile-info h1 {
+            margin: 0;
+        }
+        
+        .profile-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+        
+        .profile-info .stats {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .profile-info .stats span {
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .friends-section {
+            width: 400px;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .friends-section h2 {
+            margin: 0 0 10px;
+        }
+        
+        .friends-list {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .friend {
+            text-align: center;
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .friend img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .photos-section {
+            margin-bottom: 20px;
+        }
+        
+        .photos {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .photos img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+        
+        .post {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .post h3 {
+            margin: 0 0 5px;
+            color: #333;
+        }
+        
+        .post p {
+            color: #666;
+        }
+ 
 
+        .edit-button {
+             margin-top: 10px;
+             padding: 10px 20px;
+             background-color: #dcdcdc; 
+             border: none;
+             cursor: pointer;
+             font-size: 14px;
+             border-radius: 5px; 
+             transition: background-color 0.3s ease; 
+        }
+
+        .edit-button:hover {
+             background-color: #b0b0b0; 
+        }
+    
+
+         body {
+            margin: 0;
+            text-align: left;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="menu">
+                <p>Моя страница</p>
+                <p>Новости</p>
+                <p>Сообщения</p>
+                <p>Друзья</p>
+                <p>Группы</p>
+                <p>Фотографии</p>
+                <p>Музыка</p>
+                <p>Видео</p>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="profile-header">
+                <div class="profile-picture-section">
+                    <img src="21.jpg" alt="Profile" class="profile-picture">
+                    <button class="edit-button">Редактировать</button>
+                </div>
+
+                <div class="profile-info">
+                    <h1>Идрисов Жанат</h1>
+                    <p>Только вперед! :)</p>
+                    <p>День рождения: 8 февраля 1994 г.</p>
+                    <p>Город: Астана</p>
+                    <p>Семейное положение: Женат</p>
+                    <p>Место работы: Kaspi.kz</p>
+                    <p>Веб-сайт: <a href="http://www.idrissov.kz">http://www.idrissov.kz</a></p>
+                    
+                    <div class="stats">
+                        <span>Друзья<br>1100</span>
+                        <span>Подписчики<br>330</span>
+                        <span>Фото<br>37</span>
+                        <span>Видео<br>45</span>
+                        <span>Аудио<br>2272</span>
+                        <span>Страницы<br>188</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="friends-section">
+                <h2>Друзья 1100</h2>
+                <div class="friends-list">
+                    <div class="friend">
+                        <img src="lm.jpg" alt="Friend 1">
+                        <p>Ерасыл</p>
+                    </div>
+                    <div class="friend">
+                        <img src="cr.jpg" alt="Friend 2">
+                        <p>Султан</p>
+                    </div>
+                    <div class="friend">
+                        <img src= "l.jpg" alt="Friend 3">
+                        <p>Абылайхан</p>
+                    </div>
+                    <div class="friend">
+                        <img src="n.jpg" alt="Friend 4">
+                        <p>Умитжан</p>
+                    </div>
+                    <div class="friend">
+                        <img src="24.jpg" alt="Friend 5">
+                        <p>Алибек</p>
+                    </div>
+                    <div class="friend">
+                        <img src="25.jpg" alt="Friend 6">
+                        <p>Сеймур</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photos-section">
+                <h2>Мои фотографии</h2>
+                <div class="photos">
+                    <img src="21.jpg" alt="Photo 1">
+                    <img src="22.jpg" alt="Photo 2">
+                    <img src="23.jpg" alt="Photo 3">
+                    <img src="24.jpg" alt="Photo 4">
+                </div>
+            </div>
+            <div class="post">
+                <h3>Жанат Идрисов</h3>
+                <p>2 октября в 13:37</p>
+                <p>Нападающий «Аль-Хиляля» Неймар может покинуть саудовский клуб.
+                 Как сообщает Goal, в январе футболист может расторгнуть контракт с командой...
+            </div>
+        </div>
+    </div>
+</body>
+</html>
