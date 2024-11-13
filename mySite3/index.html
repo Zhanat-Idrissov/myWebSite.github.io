@@ -1,1 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конвертер валют</title>
+
+    <style>
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .table {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 800px; 
+            text-align: center;
+        }
+        .table h3 {
+            margin-bottom: 10px;
+        }
+        .form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .output div {
+            background-color: #f0f0f0;
+            padding: 8px;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="container">
+        
+        <div class="table">
+            <h3>Конвертация из KZT (тенге)</h3>
+            <div class="form">
+                <input type="number" id="kztAmount" placeholder="Введите сумму">
+                <button onclick="convertFromKZT()">Конвертировать</button>
+            </div>
+            <div class="output">
+                <div>USD (доллар): <span id="kztToUsd">-</span></div>
+                <div>EUR (евро): <span id="kztToEur">-</span></div>
+            </div>
+        </div>
+
+        
+        <div class="table">
+            <h3>Конвертация из USD (доллар)</h3>
+            <div class="form">
+                <input type="number" id="usdAmount" placeholder="Введите сумму">
+                <button onclick="convertFromUSD()">Конвертировать</button>
+            </div>
+            <div class="output">
+                <div>KZT (тенге): <span id="usdToKzt">-</span></div>
+                <div>EUR (евро): <span id="usdToEur">-</span></div>
+            </div>
+        </div>
+
+       
+        <div class="table">
+            <h3>Конвертация из EUR (евро)</h3>
+            <div class="form">
+                <input type="number" id="eurAmount" placeholder="Введите сумму">
+                <button onclick="convertFromEUR()">Конвертировать</button>
+            </div>
+            <div class="output">
+                <div>KZT (тенге): <span id="eurToKzt">-</span></div>
+                <div>USD (доллар): <span id="eurToUsd">-</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const buyRateUSD = 429;
+        const sellRateUSD = 431;
+        const buyRateEUR = 507;
+        const sellRateEUR = 509;
+
+        
+        function convertFromKZT() {
+            const amount = parseFloat(document.getElementById('kztAmount').value);
+            document.getElementById('kztToUsd').textContent = (amount / sellRateUSD).toFixed(2);
+            document.getElementById('kztToEur').textContent = (amount / sellRateEUR).toFixed(2);
+        }
+
+       
+        function convertFromUSD() {
+            const amount = parseFloat(document.getElementById('usdAmount').value);
+            document.getElementById('usdToKzt').textContent = (amount * buyRateUSD).toFixed(2);
+            document.getElementById('usdToEur').textContent = ((amount * buyRateUSD) / sellRateEUR).toFixed(2);
+        }
+
+        
+        function convertFromEUR() {
+            const amount = parseFloat(document.getElementById('eurAmount').value);
+            document.getElementById('eurToKzt').textContent = (amount * buyRateEUR).toFixed(2);
+            document.getElementById('eurToUsd').textContent = ((amount * buyRateEUR) / sellRateUSD).toFixed(2);
+        }
+    </script>
+    
+</body>
+</html>
 
