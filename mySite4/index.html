@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clone Twitter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .header {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 5px;
+            background-color: #ddd; 
+            padding: 10px 20px;
+            box-sizing: border-box;
+        }
+        .header button {
+            background-color: #1da1f2; 
+            color: white;
+            border: none;
+            padding: 5px;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: auto; 
+        }
+        .header button:hover {
+            background-color: #0c83c6; 
+        }
+
+        
+        .container {
+            width: 500px; 
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="tel"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #1da1f2;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0c83c6;
+        }
+        .hidden {
+            display: none;
+        }
+
+       
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <button onclick="showTweets()">Tweets</button>
+        <button onclick="showLoginPage()">Login</button>
+        <button onclick="showRegisterPage()">Registr</button>
+    </div>
+
+    <div class="container">
+        <div id="loginPage">
+            <h2>Login</h2>
+            <input type="text" id="loginEmail" placeholder="Email" />
+            <input type="password" id="loginPassword" placeholder="Password" />
+            <button onclick="login()">Enter</button>
+        </div>
+
+        <div id="registerPage" class="hidden">
+            <h2>Register</h2>
+            <input type="text" id="registerEmail" placeholder="Email" />
+            <input type="password" id="registerPassword" placeholder="Password" />
+            <input type="text" id="registerFirstName" placeholder="First Name" />
+            <input type="text" id="registerLastName" placeholder="Last Name" />
+            <input type="tel" id="registerPhone" placeholder="Phone Number" />
+            <input type="text" id="registerAddress" placeholder="Address" />
+            <input type="text" id="registerCity" placeholder="City" />
+            <button onclick="register()">Sign Up</button>
+        </div>
+
+        <div id="profilePage" class="hidden">
+            <h2>Profile</h2>
+            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+            <p><strong>Name:</strong> <span id="profileName"></span></p>
+            <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+            <p><strong>Address:</strong> <span id="profileAddress"></span></p>
+            <p><strong>City:</strong> <span id="profileCity"></span></p>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        const users = [];
+        let currentUser = null;
+
+        function showLoginPage() {
+            document.getElementById("loginPage").classList.remove("hidden");
+            document.getElementById("registerPage").classList.add("hidden");
+            document.getElementById("profilePage").classList.add("hidden");
+        }
+
+        function showRegisterPage() {
+            document.getElementById("loginPage").classList.add("hidden");
+            document.getElementById("registerPage").classList.remove("hidden");
+            document.getElementById("profilePage").classList.add("hidden");
+        }
+
+        function showProfilePage() {
+            document.getElementById("loginPage").classList.add("hidden");
+            document.getElementById("registerPage").classList.add("hidden");
+            document.getElementById("profilePage").classList.remove("hidden");
+
+            document.getElementById("profileEmail").innerText = currentUser.email;
+            document.getElementById("profileName").innerText = currentUser.firstName + " " + currentUser.lastName;
+            document.getElementById("profilePhone").innerText = currentUser.phone;
+            document.getElementById("profileAddress").innerText = currentUser.address;
+            document.getElementById("profileCity").innerText = currentUser.city;
+        }
+
+        function login() {
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
+            const user = users.find(user => user.email === email && user.password === password);
+
+            if (user) {
+                currentUser = user;
+                showProfilePage();
+            } else {
+                alert("Invalid email or password.");
+            }
+        }
+
+        function register() {
+            const email = document.getElementById("registerEmail").value;
+            const password = document.getElementById("registerPassword").value;
+            const firstName = document.getElementById("registerFirstName").value;
+            const lastName = document.getElementById("registerLastName").value;
+            const phone = document.getElementById("registerPhone").value;
+            const address = document.getElementById("registerAddress").value;
+            const city = document.getElementById("registerCity").value;
+
+            if (!email || !password || !firstName || !lastName || !phone || !address || !city) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            if (users.find(user => user.email === email)) {
+                alert("Email already registered.");
+                return;
+            }
+
+            const newUser = { email, password, firstName, lastName, phone, address, city };
+            users.push(newUser);
+            alert("Registration successful!");
+            showLoginPage();
+        }
+
+        function logout() {
+            currentUser = null;
+            showLoginPage();
+        }
+
+        function showTweets() {
+            alert("Tweets page (not implemented).");
+        }
+    </script>
+
+</body>
+
+</html>
