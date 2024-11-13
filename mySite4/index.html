@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>clone Twitter</title>
     <style>
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -22,30 +23,40 @@
             top: 0;
             right: 0;
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-start; 
             gap: 5px;
             background-color: #ddd; 
-            padding: 10px 20px;
+            padding: 5px 20px;
             box-sizing: border-box;
         }
+
+        .logo {
+           flex-shrink: 0; 
+        }
+
+        .buttons {
+            margin-left: auto; 
+        }
+
         .header button {
-            background-color: #1da1f2; 
+            background-color: #1da1f2;
             color: white;
-            border: none;
             padding: 5px;
             font-size: 12px;
-            border-radius: 4px;
+            border-radius: 3px;
             cursor: pointer;
             width: auto; 
         }
+
         .header button:hover {
             background-color: #0c83c6; 
         }
 
-        
+       
         .container {
-            width: 500px; 
-            padding: 20px;
+           
+            width: 600px; 
+            padding: 30px;
             background-color: white;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
@@ -79,7 +90,20 @@
             display: none;
         }
 
-       
+
+        #profilePage {
+           align-items: center;    
+           text-align: center;      
+           width: 50%;             
+           height: 50vh;           
+           margin: 0 auto;         
+        }
+
+
+        button {
+           margin-top: 20px; 
+        }
+
 
     </style>
 </head>
@@ -87,9 +111,16 @@
 <body>
 
     <div class="header">
-        <button onclick="showTweets()">Tweets</button>
-        <button onclick="showLoginPage()">Login</button>
-        <button onclick="showRegisterPage()">Registr</button>
+
+        <div class="logo">
+            <h1>Twitter</h1> 
+        </div>
+
+        <div class="buttons">
+            <button onclick="showTweets()">Tweets</button>
+            <button onclick="showLoginPage()">Login</button>
+            <button onclick="showRegisterPage()">Registr</button>
+        </div>
     </div>
 
     <div class="container">
@@ -113,7 +144,7 @@
         </div>
 
         <div id="profilePage" class="hidden">
-            <h2>Profile</h2>
+            <h1>Welcome, Zhanat Idrissov</h1>
             <p><strong>Email:</strong> <span id="profileEmail"></span></p>
             <p><strong>Name:</strong> <span id="profileName"></span></p>
             <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
@@ -123,6 +154,7 @@
         </div>
     </div>
 
+    
     <script>
         const users = [];
         let currentUser = null;
